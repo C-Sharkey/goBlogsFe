@@ -1,11 +1,10 @@
 import { describe, expect, test } from 'vitest'
-import { render, screen } from "../../test-utils";
+import { render } from "../../test-utils";
 import { Hero } from './Hero';
 
 describe('Hero', () => {
     test('Hero is rendered', () => {
         const { container } = render(<Hero />);
-        screen.debug();
         const hero = container.querySelector("#hero");
         expect(hero).toBeDefined();
     })
