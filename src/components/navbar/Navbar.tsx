@@ -12,7 +12,7 @@ import {
   } from '@mantine/core';
   import { IconBrandGolang } from '@tabler/icons-react';
   import { useDisclosure } from '@mantine/hooks';
-  import classes from './HeaderMegaMenu.module.css';
+  import classes from './Navbar.module.css';
   
 // Todo: fix css eslint error
 
