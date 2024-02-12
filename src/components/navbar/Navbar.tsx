@@ -9,17 +9,22 @@ import {
     ScrollArea,
     rem,
     Text,
-    Container
+    Container,
+    NavLink
   } from '@mantine/core';
   import { IconBrandGolang } from '@tabler/icons-react';
   import { useDisclosure } from '@mantine/hooks';
+  import { useNavigate } from "react-router-dom";
   import classes from './Navbar.module.css';
   
-// Todo: fix css eslint error
-// Todo: Fix test - no attributes (Jest issue)
 
   export function Navbar() {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
+    const navigate = useNavigate(); 
+    const changePage = (e: MouseEvent, page: string) => {
+      console.log("e: ", e)
+      navigate(page)
+    }
 
     return (
       <Box >
@@ -35,18 +40,20 @@ import {
     
               <Box component="nav">
                 <Group h="100%" gap={0} visibleFrom="sm">
-                  <a href="#" className={classes.link}>
+                  <a onClick={e=>changePage(e, "/about")} className={classes.link}>
                     About
                   </a>
-                  <a href="#" className={classes.link}>
+                  <a onClick={e=>changePage(e, "/blog")} className={classes.link}>
                     Blog
                   </a>
                 </Group>
               </Box>
     
               <Group visibleFrom="sm">
-                <Button variant="default">Sign in</Button>
-                <Button>Sign up</Button>
+                <Button variant="default" onClick={e => changePage(e, "/signin")}>
+                  Sign in
+                  </Button>
+                <Button onClick={e => changePage(e, "/signup")}>Sign up</Button>
               </Group>
     
               <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
@@ -55,13 +62,13 @@ import {
           </header>
   
         <Drawer
-        opened={drawerOpened}
-        onClose={closeDrawer}
-        size="100%"
-        padding="md"
-        title="Navigation"
-        hiddenFrom="sm"
-        zIndex={1000000}
+          opened={drawerOpened}
+          onClose={closeDrawer}
+          size="100%"
+          padding="md"
+          title="Navigation"
+          hiddenFrom="sm"
+          zIndex={1000000}
       >
         <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
           <Divider my="sm" />

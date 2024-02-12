@@ -7,8 +7,6 @@ import '@mantine/core/styles.css';
 import { theme } from './theme.ts'
 
 
-
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <MantineProvider theme={theme}>
       <React.StrictMode>
